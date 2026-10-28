@@ -253,7 +253,7 @@ class SpatialReasoningPlanner:
         p_start: Sequence[float],
         p_end: Sequence[float],
         obs_xyz: Sequence[float],
-        safety_margin_m: float = 0.12,
+        safety_margin_m: float = 0.085,
     ) -> bool:
         """Check if 2D horizontal line segment between pick and place passes near an obstacle."""
         a = np.asarray(p_start[:2], dtype=np.float64)

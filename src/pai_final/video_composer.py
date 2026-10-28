@@ -523,7 +523,7 @@ class SubmissionVideoComposer:
                         f"Roll / Pitch  : {step_d.roll_pitch_yaw_deg[0]:+5.1f}° / {step_d.roll_pitch_yaw_deg[1]:+5.1f}°",
                         (160, 240, 180),
                     ),
-                    (f"Push Recovery : 98.4% Success Rate", (255, 220, 120)),
+                    (f"Push Recovery : {curve[-1]['push_recovery_rate_pct']:.2f}% Success Rate", (255, 220, 120)),
                     ("▼ 独自工夫点 (サンプルからの発展):", (130, 205, 255)),
                     ("・ランダム横方向外乱と姿勢安定化報酬を追加", (220, 225, 235)),
                     ("・旋回+加減速の動的目標ベクトル追従を実現", (220, 225, 235)),
@@ -583,7 +583,7 @@ class SubmissionVideoComposer:
                     title="定量評価サマリ・ベースラインからの発展点・考察",
                     subtitle="Google Colab T4/L4 GPU環境における実験結果とPhysical AIの実用展望",
                     bullet_points=[
-                        "1. Go2外乱耐性PPO強化学習: 速度追従誤差 0.048 m/s、横方向外乱(0.55m/s)からの回復率 98.4% 達成",
+                        f"1. Go2外乱耐性PPO強化学習: 速度追従誤差 {curve[-1]['velocity_tracking_error_ms']:.3f} m/s、横方向外乱(0.55m/s)からの回復率 {curve[-1]['push_recovery_rate_pct']:.2f}% 達成",
                         "2. Franka自律仕分け制御: 5次多項式(最小躍度)軌道補間により終端位置誤差 < 2.5mm、把持成功率 100%",
                         "3. 障害物回避: 2D線分交差判定とクリアランス高度動的切替(Z=0.16m→0.24m)により衝突0件を達成",
                         "4. Colab完結設計: ヘッドレスオフスクリーン描画(GUI=False)によりクラウドGPU上で学習〜録画を完全自動化",

@@ -59,10 +59,13 @@ class TestSpatialReasoningAndTrajectory(unittest.TestCase):
             [step.object_id for step in plan],
             ["med_kit_red", "sensor_unit_blue", "supply_box_green"],
         )
-        # supply_box_green at (0.46, 0.06) to bin (0.58, 0.28) passes near debris at (0.50, 0.11)
-        green_step = plan[2]
-        self.assertTrue(green_step.requires_obstacle_avoidance)
-        self.assertAlmostEqual(green_step.via_clearance_z, self.cfg.obstacle_clearance_z)
+        # Step 1 (red) has a clear path (Z=0.16m); Step 2 (blue) and Step 3 (green) intersect debris (Z=0.24m)
+        self.assertFalse(plan[0].requires_obstacle_avoidance)
+        self.assertAlmostEqual(plan[0].via_clearance_z, self.cfg.hover_clearance_z)
+        self.assertTrue(plan[1].requires_obstacle_avoidance)
+        self.assertAlmostEqual(plan[1].via_clearance_z, self.cfg.obstacle_clearance_z)
+        self.assertTrue(plan[2].requires_obstacle_avoidance)
+        self.assertAlmostEqual(plan[2].via_clearance_z, self.cfg.obstacle_clearance_z)
 
     def test_minimum_jerk_boundary_conditions(self) -> None:
         """Verify 5th-order polynomial starts at 0 and ends at 1 with zero boundary velocity/accel."""
