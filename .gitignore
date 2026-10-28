@@ -1,0 +1,27 @@
+# Worktrees & Virtual Environments
+.worktrees/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Secrets & Environment
+.env
+.env.local
+
+# Local-only Governance & Review Assets (Never push to Public GitHub)
+AGENTS.md
+AGENTS.html
+.agents/
+specs/
+docs/
+open.md
+*.html
+
+# Simulation Logs & Checkpoints
+logs/
+outputs/
+*.mp4
+*.pdf

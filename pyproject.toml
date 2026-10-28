@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pai-final-creative-robotics"
+version = "1.0.0"
+description = "Physical AI Applied Course 1 Final Project: VLM Spatial Reasoning & Genesis Parallel RL Robotics Suite"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24.0",
+    "pillow>=10.0.0",
+    "matplotlib>=3.7.0",
+    "opencv-python-headless>=4.8.0",
+    "pyyaml>=6.0.0",
+]
+
+[project.optional-dependencies]
+colab = [
+    "genesis-world>=0.2.1",
+    "rsl-rl-lib==2.2.4",
+    "tensorboard>=2.14.0",
+    "imageio[ffmpeg]>=2.31.0",
+]
+dev = [
+    "pytest>=8.0.0",
+    "reportlab>=4.0.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
